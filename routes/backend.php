@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +16,12 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::get('/emailgen', [HomeController::class, 'emailgen'])->name('emailgen');
+
+Route::controller(MemberController::class)->group(function(){
+    Route::get('/user/index', 'index')->name('users');
+    Route::get('/user/new', 'create')->name('user_new');
+    Route::get('/user', 'profile')->name('profile');
+});

@@ -56,13 +56,12 @@
                             <div class="ms-auto position-relative">
                               <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-envelope-fill"></i></div>
                               <input id="email" type="email" class="form-control radius-30 ps-5 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus  id="inputEmailAddress" placeholder="Email Address">
-
-                                @error('email')
+                            </div>
+                            {{-- @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                            @enderror --}}
                           </div>
                           <div class="col-12">
                             <label for="inputChoosePassword" class="form-label">Enter Password</label>

@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('backend.index');
+    }
+
+    public function emailgen()
+    {
+        return view('backend.emailgen');
     }
 }
