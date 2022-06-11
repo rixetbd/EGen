@@ -2,15 +2,45 @@
 
 @section('style')
 <link href="{{asset('backend_assets')}}/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<style>
+.attendence_box{
+    width: 120px;
+    display: inline-block;
+    overflow: hidden;
+    height: 50px;
+    border-radius: 5px;
+    /* border: 1px solid #fff; */
+    margin: 0 15px 0 0;
+}
+.attendence_box span{
+    justify-content: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.green_box{
+    background-color: #009c00;
+}
+</style>
 @endsection
 
 @section('content')
 
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <a href="#" class="attendence_box green_box"><span>Time In</span></a>
+                <a href="#" class="attendence_box bg-danger"><span>Time Out</span></a>
+            </div>
+            <div class="col-6"></div>
+        </div>
+    </div>
+</div>
+
 <div class="d-flex justify-content-between">
-    <h6 class="mb-0">Users Information</h6>
-    @if (Auth::user()->role == "Admin" || Auth::user()->role == "Developer")
-    <a href="{{route('user_new')}}" class="mb-0 btn btn-sm btn-primary"><i class="bx bx-plus"></i> Add User</a>
-    @endif
+    <h6 class="mb-0">Attendence Information</h6>
 </div>
 
 <hr/>
@@ -32,7 +62,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($all_users as $key=>$user)
+                    @forelse ($all_staff_attendence as $key=>$user)
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$user->name}}</td>

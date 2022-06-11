@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\AttendenceController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 
@@ -24,4 +24,12 @@ Route::controller(MemberController::class)->group(function(){
     Route::get('/user/index', 'index')->name('users');
     Route::get('/user/new', 'create')->name('user_new');
     Route::get('/user', 'profile')->name('profile');
+    Route::post('/user/create', 'store')->name('user_new_create');
+    Route::post('/user/update', 'update')->name('user_update');
+    Route::get('/user/edit/{id}', 'edit')->name('user_edit');
+    Route::get('/user/delete/{id}', 'destroy')->name('user_delete');
+});
+
+Route::controller(AttendenceController::class)->group(function(){
+    Route::get('/attendence/index', 'index')->name('attendence.index');
 });
